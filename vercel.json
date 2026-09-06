@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/live-status",
+      "destination": "/livestatus.html"
+    },
+    {
+      "source": "/help",
+      "destination": "/help.html"
+    }
+  ]
+}
