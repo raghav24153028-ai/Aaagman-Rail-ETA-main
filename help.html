@@ -65,10 +65,10 @@
     .navbar .brand-logo { height: 96px; width: auto; object-fit: contain; margin-right: 40px; display: block; }
     
     .nav-links { display: flex; gap: 32px; align-items: center; }
-    .nav-link { font-weight: 500; color: var(--text-muted); position: relative; padding: 8px 0; }
-    .nav-link.active { color: var(--color-blue); font-weight: 600; }
-    .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--color-blue); }
-    .nav-link:hover:not(.active) { color: var(--color-blue); }
+    .nav-link { font-weight: 500; color: var(--text-body); position: relative; padding: 8px 0; }
+    .nav-link.active { color: var(--color-navy); font-weight: 600; }
+    .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--color-navy); }
+    .nav-link:hover:not(.active) { color: var(--color-navy); }
 
     .btn-primary { background: var(--color-blue); color: var(--bg-white); padding: 12px 24px; border-radius: var(--radius-full); font-weight: 600; font-size: 14px; transition: background 0.2s; }
     .btn-primary:hover { background: #1D4ED8; } /* darker blue */
@@ -284,8 +284,7 @@
         <a href="help.html" class="nav-link active">Help</a>
       </div>
       <div class="nav-right" style="display: flex; align-items: center; gap: 16px;">
-        <button class="btn-primary">Search Train</button>
-        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle navigation menu">☰</button>
       </div>
     </div>
     <!-- Mobile Menu -->
@@ -293,24 +292,9 @@
       <a href="/" class="nav-link">Home</a>
       <a href="livestatus.html" class="nav-link">Live Status</a>
       <a href="help.html" class="nav-link active">Help</a>
-      <button class="btn-primary" style="margin-top: 12px; text-align: center;">Search Train</button>
     </div>
   </nav>
 
-  <!-- 1. Hero Search -->
-  <section class="hero-search section-padding">
-    <div class="container">
-      <div class="hero-pill label-uppercase">Knowledge Base & Support</div>
-      <h1 class="hero-title">How can we help?</h1>
-      <p class="hero-subtitle">Learn how Aagman tracks trains, predicts ETA and helps you understand delays.</p>
-      
-      <div class="search-box">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" class="search-input" placeholder="Search help articles, delay guides, or prediction FAQ...">
-        <button class="btn-primary">Search Help</button>
-      </div>
-    </div>
-  </section>
 
   <!-- Splash Screen Logic -->
   <script>
@@ -478,7 +462,7 @@
   </section>
 
   <!-- 4. Pipeline -->
-  <section class="pipeline section-padding text-center stack-section stack-section-1">
+  <section class="pipeline section-padding text-center">
     <div class="container">
       <div class="label-uppercase" style="color: var(--color-blue); margin-bottom: 12px;">Pipeline Overview</div>
       <h2 class="section-title">How our prediction works</h2>
@@ -522,15 +506,15 @@
           <h3 class="pipe-title">Network Congestion</h3>
           <p class="pipe-desc">Computes density and headway gaps of preceding passenger & freight rail traffic.</p>
         </div>
-        <div class="pipe-card dark">
+        <div class="pipe-card">
           <div class="pipe-badge">7</div>
           <div class="pipe-icon">🧠</div>
           <h3 class="pipe-title">AI Prediction Model</h3>
           <p class="pipe-desc">Multi-variable recurrent neural engine synthesizes real-time and historical curves.</p>
         </div>
-        <div class="pipe-card green">
+        <div class="pipe-card">
           <div class="pipe-badge">8</div>
-          <div class="pipe-icon" style="color: white;">🎯</div>
+          <div class="pipe-icon">🎯</div>
           <h3 class="pipe-title">Predicted ETA</h3>
           <p class="pipe-desc">Dynamic passenger-ready arrival forecast updated station by station.</p>
         </div>
@@ -540,7 +524,7 @@
   </section>
 
   <!-- 5. FAQ -->
-  <section class="faq section-padding text-center stack-section stack-section-2">
+  <section class="faq section-padding text-center">
     <div class="container">
       <h2 class="section-title">Frequently asked questions</h2>
       <p class="section-subtitle">Everything you need to know about our railway tracking engine.</p>
@@ -611,8 +595,8 @@
     </div>
   </section>
 
-  <!-- 6. Form -->
-  <section class="contact-form section-padding text-center stack-section stack-section-3">
+  <!-- 6. Still Need Help Form Section -->
+  <section class="contact-form section-padding text-center">
     <div class="container">
       <div class="form-card text-left" style="text-align: left;">
         <h2 class="section-title text-center" style="text-align: center;">Still need help?</h2>
@@ -694,13 +678,15 @@
     // Form Validation Logic
     const form = document.getElementById('helpForm');
     const successMsg = document.getElementById('formSuccess');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (form.checkValidity()) {
-        form.style.display = 'none';
-        successMsg.style.display = 'block';
-      }
-    });
+    if (form && successMsg) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (form.checkValidity()) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        }
+      });
+    }
 
     // Stacking Scroll Effect
     document.addEventListener("DOMContentLoaded", () => {

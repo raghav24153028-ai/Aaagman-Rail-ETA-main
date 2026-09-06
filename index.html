@@ -84,9 +84,10 @@
     .hero-title span { color: var(--color-navy); }
     .hero-subtitle { font-size: 16px; margin-bottom: 32px; max-width: 480px; }
     
-    .search-row { display: flex; align-items: center; background: var(--bg-white); border: 1px solid var(--border-color); border-radius: var(--radius-full); padding: 6px; padding-left: 16px; box-shadow: var(--shadow-sm); margin-bottom: 12px; }
-    .search-input { border: none; outline: none; flex-grow: 1; font-size: 15px; padding: 8px; }
-    .search-helper { font-size: 13px; color: var(--text-muted); margin-left: 16px; }
+    .hero-actions { display: flex; align-items: center; gap: 16px; margin-top: 8px; }
+    .hero-btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; font-size: 16px; font-weight: 600; border-radius: var(--radius-full); background: var(--color-navy); color: var(--bg-white); box-shadow: 0 4px 14px rgba(15, 23, 42, 0.16); transition: all 0.2s ease; text-decoration: none; cursor: pointer; }
+    .hero-btn:hover { background: var(--color-navy-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15, 23, 42, 0.24); color: var(--bg-white); }
+    .hero-btn svg { width: 18px; height: 18px; stroke-width: 2.5; pointer-events: none; }
 
     .hero-content { flex: 1; max-width: 500px; padding-right: 32px; }
     .hero-image-wrapper { flex: 1; position: relative; }
@@ -126,11 +127,11 @@
     .method-divider { height: 1px; background: var(--border-color); margin-bottom: 16px; }
     .method-link { color: var(--color-blue); font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
     
-    .flow-diagram { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 48px; flex-wrap: wrap; }
-    .flow-pill { padding: 8px 16px; border-radius: var(--radius-full); border: 1px solid var(--border-color); background: var(--bg-white); font-size: 13px; font-weight: 500; }
+    .flow-diagram { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 0; flex-wrap: wrap; }
+    .flow-pill { padding: 8px 18px; border-radius: var(--radius-full); border: 1px solid var(--border-color); background: var(--bg-white); font-size: 13px; font-weight: 600; color: var(--text-main); box-shadow: var(--shadow-sm); }
     .flow-pill.active-blue { background: var(--color-blue); color: var(--bg-white); border-color: var(--color-blue); }
     .flow-pill.active-green { background: var(--color-green); color: var(--bg-white); border-color: var(--color-green); }
-    .flow-arrow { color: var(--text-muted); }
+    .flow-arrow { color: var(--text-muted); font-size: 14px; }
 
     /* Journey Preview */
     .journey { background: var(--bg-white); }
@@ -289,16 +290,14 @@
         <a href="help.html" class="nav-link">Help</a>
       </div>
       <div class="nav-right" style="display: flex; align-items: center; gap: 16px;">
-        <button class="btn-primary">Search Train</button>
-        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        <button class="mobile-menu-btn" id="menuBtn" aria-label="Toggle navigation menu">☰</button>
       </div>
     </div>
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-      <a href="home.html" class="nav-link active">Home</a>
+      <a href="/" class="nav-link active">Home</a>
       <a href="livestatus.html" class="nav-link">Live Status</a>
       <a href="help.html" class="nav-link">Help</a>
-      <button class="btn-primary" style="margin-top: 12px; text-align: center;">Search Train</button>
     </div>
   </nav>
 
@@ -330,12 +329,15 @@
         <h1 class="hero-title">Know exactly when your train arrives — <span>every station, every time.</span></h1>
         <p class="hero-subtitle">Real-time train tracking and AI-powered ETA predictions for a smoother journey across the Indian Railway network.</p>
         
-        <div class="search-row">
-          <span style="padding: 0 8px;">🔍</span>
-          <input type="text" class="search-input" placeholder="12951 — Mumbai Rajdhani">
-          <button class="btn-primary">Search Train</button>
+        <div class="hero-actions">
+          <a href="/livestatus.html" class="hero-btn" id="searchTrainsBtn" role="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            Search Trains
+          </a>
         </div>
-        <p class="search-helper">Example: 12951 Mumbai Rajdhani, 22436 Vande Bharat</p>
       </div>
       
       <div class="hero-visual">
@@ -423,12 +425,10 @@
         <div class="flow-arrow">➔</div>
         <div class="flow-pill">Live Signals</div>
         <div class="flow-arrow">➔</div>
-        <div class="flow-pill active-blue">Aagman AI Model</div>
+        <div class="flow-pill">Aagman AI Model</div>
         <div class="flow-arrow">➔</div>
-        <div class="flow-pill active-green">Predicted ETA</div>
+        <div class="flow-pill">Predicted ETA</div>
       </div>
-
-      <button class="btn-outline">Learn how it works ›</button>
     </div>
   </section>
 
@@ -569,7 +569,7 @@
   </section>
 
   <!-- Advantages -->
-  <section class="how-it-works advantages section-padding text-center stack-section stack-section-1">
+  <section class="how-it-works advantages section-padding text-center">
     <div class="container">
       <div class="section-label label-uppercase">Advantages</div>
       <h2 class="section-title">Why Choose Aagman</h2>
@@ -595,25 +595,16 @@
     </div>
   </section>
 
-  <!-- CTA Banner -->
-  <section class="cta stack-section stack-section-2">
-    <div class="container">
-      <h2 class="cta-title">Smarter train travel for a connected India.</h2>
-      <p class="cta-sub">Get real-time train updates and intelligent arrival predictions before stepping onto the platform.</p>
-      <button class="btn-white">Check Live Status</button>
-    </div>
-  </section>
-
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-top">
         <div>
-          <a href="home.html"><img src="/logo.jpg" alt="Aagman Logo" class="brand-logo f-logo"></a>
+          <a href="/"><img src="/logo.jpg" alt="Aagman Logo" class="brand-logo f-logo"></a>
           <p class="f-desc">Real-time insights. Smoother journeys. A more connected India.</p>
         </div>
         <div class="f-nav">
-          <a href="home.html">Home</a>
+          <a href="/">Home</a>
           <a href="livestatus.html">Live Status</a>
           <a href="help.html">Help</a>
         </div>
@@ -633,9 +624,18 @@
     // Mobile Menu Toggle
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-      menuBtn.innerHTML = mobileMenu.classList.contains('open') ? '✕' : '☰';
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        menuBtn.innerHTML = mobileMenu.classList.contains('open') ? '✕' : '☰';
+      });
+    }
+
+    document.querySelectorAll('.hero-btn, #searchTrainsBtn, .btn-white, .journey-footer .btn-primary').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = '/livestatus.html';
+      });
     });
 
     // Stacking Scroll Effect

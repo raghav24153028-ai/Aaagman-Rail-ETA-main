@@ -1,277 +1,465 @@
-/* Live Train Status CSS */
+/* Live Train Status CSS — Aligned to Figma Screenshot 1 */
 
 .train-status-page {
-  background-color: #F1F5F9;
-  min-height: 100vh;
-  padding: 16px 16px 32px 16px;
-  box-sizing: border-box;
+  background-color: #F8FAFC;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .status-card {
   background-color: #FFFFFF;
   border-radius: 16px;
   border: 1px solid #E2E8F0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  padding: 24px;
   box-sizing: border-box;
+  text-align: left;
 }
 
-/* Card 1: Search */
-.card-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 6px;
+/* ========================================================
+   CARD 1: SEARCH
+   ======================================================== */
+.search-card {
+  padding: 28px 24px 24px 24px;
 }
 
-.card-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #0F172A;
-  margin: 0;
-}
-
-.badge-active-gps {
-  background-color: #D1FAE5;
-  color: #065F46;
+.satellite-pill-badge {
+  display: inline-block;
+  background-color: #EFF6FF;
+  color: #2563EB;
   font-size: 11px;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.06em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
 }
 
-.gps-dot {
-  width: 6px;
-  height: 6px;
-  background-color: #10B981;
-  border-radius: 50%;
+.live-page-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
-.card-subtext {
+.live-page-subtitle {
+  font-size: 14px;
   color: #64748B;
-  font-size: 13px;
-  margin: 0 0 14px 0;
-  line-height: 1.4;
+  margin: 0 0 20px 0;
 }
 
 .search-form-row {
   display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .search-input-wrapper {
   position: relative;
   flex: 1;
-  display: flex;
-  align-items: center;
 }
 
 .search-input-icon {
   position: absolute;
-  left: 12px;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 18px;
   height: 18px;
-  stroke: #94A3B8;
-  stroke-width: 2;
-  fill: none;
+  color: #94A3B8;
+  pointer-events: none;
 }
 
 .search-input {
   width: 100%;
-  padding: 10px 12px 10px 38px;
-  border: 1px solid #CBD5E1;
-  border-radius: 10px;
-  font-size: 14px;
-  font-family: inherit;
-  font-weight: 600;
+  height: 48px;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 0 16px 0 46px;
+  font-size: 15px;
+  font-weight: 500;
   color: #0F172A;
-  background-color: #FFFFFF;
-  outline: none;
   box-sizing: border-box;
+  background: #FFFFFF;
+  outline: none;
+  transition: all 0.2s;
+  font-family: inherit;
 }
 
 .search-input:focus {
   border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .search-button {
-  background-color: #2563EB;
+  height: 48px;
+  background-color: #0F172A;
   color: #FFFFFF;
+  border-radius: 12px;
+  padding: 0 24px;
   font-size: 14px;
-  font-weight: 700;
-  font-family: inherit;
-  border: none;
-  border-radius: 10px;
-  padding: 0 18px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background 0.2s, transform 0.15s;
+  border: none;
   white-space: nowrap;
+  font-family: inherit;
 }
 
 .search-button:hover {
-  background-color: #1D4ED8;
+  background-color: #1E293B;
+  transform: translateY(-1px);
 }
 
-.search-footer-row {
+.quick-select-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 13px;
 }
 
-.example-text {
+.quick-select-label {
   color: #64748B;
+  font-weight: 500;
+  margin-right: 4px;
 }
 
-.example-link {
-  color: #334155;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.recent-link {
-  color: #2563EB;
-  font-weight: 700;
-}
-
-/* Card 2: Train Summary */
-.badge-superfast {
-  background-color: #334155;
-  color: #FFFFFF;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 10px;
+.quick-pill {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 9999px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  font-family: inherit;
 }
 
-.route-line {
+.quick-pill:hover, .quick-pill.active {
+  border-color: #2563EB;
+  color: #2563EB;
+  background-color: #EFF6FF;
+}
+
+.recent-pill {
+  color: #2563EB;
+  border-color: #DBEAFE;
+  background-color: #F8FAFC;
+}
+
+/* Autocomplete Dropdown */
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 50;
+  padding: 6px 0;
+}
+
+.search-dropdown-item {
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1E293B;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.search-dropdown-item:hover {
+  background-color: #EFF6FF;
+  color: #2563EB;
+}
+
+.train-code {
+  font-weight: 700;
+  color: #2563EB;
+  margin-right: 8px;
+}
+
+/* ========================================================
+   CARD 2: TRAIN SUMMARY
+   ======================================================== */
+.train-summary-card {
+  padding: 24px;
+}
+
+.train-summary-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.train-badges-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.badge-superfast {
+  background-color: #EFF6FF;
+  color: #2563EB;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 4px 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.badge-running-pill {
+  background-color: #DCFCE7;
+  color: #16A34A;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 4px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.running-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #16A34A;
+}
+
+.summary-actions-group {
+  display: flex;
+  gap: 8px;
+}
+
+.action-outline-btn {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.action-outline-btn:hover {
+  border-color: #CBD5E1;
+  background: #F8FAFC;
+  color: #0F172A;
+}
+
+/* ========================================================
+   2-COLUMN TOP ROW: TRAIN SUMMARY (50%) & PREDICTIONS (50%)
+   ======================================================== */
+.status-top-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+@media (max-width: 960px) {
+  .status-top-row-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.train-summary-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.train-main-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.train-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.route-endpoints {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
   color: #475569;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 12px;
 }
 
-.route-arrow {
+.route-arrow-icon {
   width: 14px;
   height: 14px;
-  stroke: #475569;
-  stroke-width: 2;
-  fill: none;
+  color: #94A3B8;
 }
 
-.status-banner {
-  background-color: #ECFDF5;
-  border: 1px solid #A7F3D0;
-  border-radius: 10px;
-  padding: 12px;
-  margin-bottom: 14px;
-}
-
-.banner-main-text {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  color: #065F46;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.4;
-}
-
-.banner-dot {
-  width: 8px;
-  height: 8px;
-  background-color: #10B981;
-  border-radius: 50%;
-  margin-top: 5px;
-  flex-shrink: 0;
-}
-
-.banner-subtext {
-  color: #059669;
+.last-updated-text {
   font-size: 11px;
-  margin-top: 4px;
-  margin-left: 16px;
-}
-
-.mini-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.mini-stat-card {
-  border-radius: 10px;
-  padding: 10px 8px;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-.mini-stat-label {
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.mini-stat-value {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.stat-status {
-  background-color: #F8FAFC;
-}
-.stat-status .mini-stat-label { color: #64748B; }
-.stat-status .mini-stat-value { color: #16A34A; }
-
-.stat-delay {
-  background-color: #FFF6F6;
-}
-.stat-delay .mini-stat-label { color: #F87171; }
-.stat-delay .mini-stat-value { color: #DC2626; }
-
-.stat-confidence {
-  background-color: #F4F9FF;
-}
-.stat-confidence .mini-stat-label { color: #3B82F6; }
-.stat-confidence .mini-stat-value { color: #0F172A; }
-
-/* Card 3: Live Station Progression */
-.section-header-uppercase {
-  font-size: 12px;
-  font-weight: 700;
-  color: #64748B;
-  letter-spacing: 0.5px;
-}
-
-.distance-text {
-  font-size: 12px;
   color: #94A3B8;
   font-weight: 500;
 }
 
+.stats-3col-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.stat-box {
+  background-color: #F8FAFC;
+  border: 1px solid #F1F5F9;
+  border-radius: 12px;
+  padding: 12px 10px;
+  box-sizing: border-box;
+}
+
+.stat-box-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #94A3B8;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.stat-box-value-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.stat-box-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.stat-box-value.text-red {
+  color: #DC2626;
+}
+
+.pill-status-green {
+  background-color: #DCFCE7;
+  color: #16A34A;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.pill-status-red {
+  background-color: #FEE2E2;
+  color: #DC2626;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.pill-status-blue {
+  background-color: #DBEAFE;
+  color: #2563EB;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+/* Timeline Card */
+.timeline-card {
+  padding: 24px;
+}
+
+.timeline-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.section-super-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #2563EB;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.section-main-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.distance-remaining-tag {
+  font-size: 12px;
+  color: #64748B;
+  font-weight: 600;
+  background-color: #F1F5F9;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
 .timeline-container {
-  margin-top: 16px;
   position: relative;
 }
 
 .timeline-row {
   display: grid;
-  grid-template-columns: 48px 24px 1fr auto;
+  grid-template-columns: 50px 24px 1fr auto;
   align-items: flex-start;
   position: relative;
-  padding-bottom: 16px;
+  padding-bottom: 18px;
 }
 
 .timeline-row:last-child {
@@ -307,9 +495,9 @@
 .track-line {
   position: absolute;
   top: 18px;
-  bottom: -16px;
+  bottom: -18px;
   width: 2px;
-  background-color: #CBD5E1;
+  background-color: #E2E8F0;
   z-index: 1;
 }
 
@@ -323,8 +511,8 @@
 }
 
 .station-info-col {
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 10px;
+  padding-right: 12px;
 }
 
 .station-name {
@@ -339,6 +527,13 @@
   font-style: italic;
   color: #94A3B8;
   margin-top: 3px;
+}
+
+.final-dest-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #2563EB;
+  margin-top: 4px;
 }
 
 .actual-col {
@@ -366,8 +561,8 @@
 }
 
 .pill-ontime {
-  background-color: #D1FAE5;
-  color: #065F46;
+  background-color: #DCFCE7;
+  color: #16A34A;
 }
 
 .pill-delayed {
@@ -375,19 +570,24 @@
   color: #DC2626;
 }
 
-.final-dest-label {
-  font-size: 11px;
-  font-weight: 700;
+.pill-next-stop {
+  background-color: #EFF6FF;
   color: #2563EB;
+  border: 1px solid #DBEAFE;
+}
+
+.upcoming-label {
+  color: #94A3B8;
+  font-size: 11px;
   margin-top: 4px;
 }
 
-/* Inline Highlight Box for Live Position */
+/* Inline Live Position Box */
 .live-position-box {
-  background-color: #0C2646;
+  background-color: #0B1F3A;
   border-radius: 12px;
-  padding: 12px;
-  margin: 4px 0 16px 0;
+  padding: 14px;
+  margin: 4px 0 18px 0;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -396,8 +596,8 @@
 .live-train-square {
   background-color: #1E3A8A;
   border-radius: 10px;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -433,14 +633,14 @@
 .live-position-text {
   color: #FFFFFF;
   font-size: 12px;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
 /* Timeline Legend */
 .timeline-legend {
   border-top: 1px solid #F1F5F9;
-  margin-top: 16px;
-  padding-top: 12px;
+  margin-top: 20px;
+  padding-top: 16px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px 16px;
@@ -451,10 +651,25 @@
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
-/* Card 4: Delay Insights */
+/* ========================================================
+   RIGHT COLUMN: DELAY & PREDICTION INSIGHTS
+   ======================================================== */
+.insights-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0F172A;
+  margin: 0;
+}
+
+.insights-subtext {
+  font-size: 12px;
+  color: #64748B;
+  margin-top: 2px;
+}
+
 .total-delay-pill {
   background-color: #FEE2E2;
   color: #DC2626;
@@ -468,7 +683,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 .delay-item-row {
@@ -518,15 +733,38 @@
   transition: width 0.3s ease;
 }
 
-/* Card 5: Prediction Insights */
+/* Prediction Insights */
+.prediction-insights-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.badge-confidence {
+  background-color: #DCFCE7;
+  color: #16A34A;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
 .prediction-summary-box {
   background-color: #F8FAFC;
-  border-radius: 10px;
-  padding: 12px;
+  border-radius: 12px;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 12px;
+  gap: 8px;
+  margin-top: 10px;
   margin-bottom: 14px;
 }
 
@@ -557,7 +795,7 @@
   align-items: center;
   justify-content: space-between;
   font-size: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .trend-label {
@@ -573,14 +811,14 @@
   display: flex;
   border-radius: 9999px;
   overflow: hidden;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .segment {
   flex: 1;
   text-align: center;
   padding: 8px 4px;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 }
 
@@ -613,4 +851,16 @@
 
 .action-btn-link:hover {
   background-color: #DBEAFE;
+}
+
+@media (max-width: 768px) {
+  .stats-3col-grid {
+    grid-template-columns: 1fr;
+  }
+  .search-form-row {
+    flex-direction: column;
+  }
+  .search-button {
+    width: 100%;
+  }
 }
